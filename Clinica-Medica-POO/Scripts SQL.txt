@@ -1,0 +1,58 @@
+CREATE DATABASE clinicadb;
+
+USE clinicadb;
+
+CREATE TABLE pacientes(
+	id int not null auto_increment,
+	nome varchar(100) default null,
+	telefone varchar(50) default null,
+	email varchar (100) default null,
+	nascimento date,
+	primary key (id)
+);
+
+
+CREATE TABLE exames(
+	id int not null auto_increment,
+	nome varchar(100) default null,
+	valor double(13,2) default null,
+	primary key (id)
+);
+
+CREATE TABLE users(
+	id int not null auto_increment,
+	nome varchar(100) default null,
+	senha varchar(50) default null,
+	primary key (id)
+);
+
+CREATE TABLE medicos(
+	id int not null auto_increment,
+	nome varchar(100) default null,
+	especialidade varchar(50) default null,
+	primary key (id)
+);
+
+CREATE TABLE consultas(
+	id int not null auto_increment,
+	exame int(11) default null,
+	tipo varchar(50) default null,
+	paciente int(11) default null,
+	medico int(11) default null,
+	data date,
+	primary key (id)
+);
+
+
+INSERT INTO pacientes (id, nome, telefone, email, nascimento) VALUES (1, 'Vitor', '1163145879', 'vitor@gmail.com', '1998-07-20');
+INSERT INTO pacientes (id, nome, telefone, email, nascimento) VALUES (2, 'Claudio', '1147120398', 'claudio@gmail.com', '1998-01-14');
+INSERT INTO pacientes (id, nome, telefone, email, nascimento) VALUES (3, 'Rafael', '1145627896', 'rafael@gmail.com', '1998-04-10');
+
+INSERT INTO exames (id, nome, valor) VALUES (1, 'Hemograma', 60.00);
+INSERT INTO exames (id, nome, valor) VALUES (2, 'Oftalmologia', 80.00);
+INSERT INTO exames (id, nome, valor) VALUES (3, 'eletrocardiograma', 200.00);
+
+INSERT INTO medicos (id, nome, especialidade) VALUES (1, 'Antonio', 'Cardiologia');
+INSERT INTO medicos (id, nome, especialidade) VALUES (2, 'Satoshi', 'Oftalmologia');
+INSERT INTO medicos (id, nome, especialidade) VALUES (3, 'Colevati', 'Hematologia');
+
